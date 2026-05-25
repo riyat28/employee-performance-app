@@ -29,7 +29,12 @@ public class DatabaseConfig {
     }
 }
 // Private constructor to prevent instantiation
-private DatabaseConfig(){};
+private DatabaseConfig(){}
+/**
+     * Tries to establish and return a live connection to the MySQL container.
+     * Note: The calling method is responsible for closing this connection 
+     * (which we will handle using try-with-resources).
+     */
 public static Connection getConnection() throws SQLException{
    return DriverManager.getConnection(
     properties.getProperty("db.url"),
